@@ -38,3 +38,20 @@
 	```
 
 	initializer refers to the `__init__` method?
+
+* Testing if object belongs to a class:
+  ```
+  isinstance([], object)
+  ```
+
+* Most built-in types can be similarly extended. Commonly extended built-ins are object, list, set, dict, file, and str. 
+
+* Using `super()` , we can ensure that classes with multiple inheritance only calls the parent class once. This is known as the `next` method
+
+* Abstract Base Class define set of methods and properties that a class must implement to be considered a duck-type instance of that class
+
+*  Mixins - encapsulate behaviour that can be reused in other classes
+
+https://easyaspython.com/mixins-for-fun-and-profit-cb9962760556
+
+* Learn logging: https://docs.python.org/3.6/howto/logging.html
