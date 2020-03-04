@@ -55,3 +55,18 @@
 https://easyaspython.com/mixins-for-fun-and-profit-cb9962760556
 
 * Learn logging: https://docs.python.org/3.6/howto/logging.html
+
+* All exceptions inherit from `BaseException`
+
+* All exceptions must extend `BaseException` or one of its subclasses
+
+	 ____________BaseException____________
+	|									|										|
+SystemExit		KeyboardInterrupt			Exception
+																				|
+																		Most other exceptions
+
+
+* When we use `except` without specifying the exception to catch it will catch all subclasses of BaseException, including SystemExit and KeyboardInterrupt
+
+If we want to catch all exceptions apart from those 2 special cases, use `except Exception as e:`
