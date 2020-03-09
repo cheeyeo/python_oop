@@ -89,3 +89,49 @@ Always use a standard attribute until we need to control access to the property 
 
 Only difference between an attribute and a property is that we can invoke custom actions automatically when a property is retrieved, set or deleted
 
+* Empty object => can instantiate an object without defining a class
+```
+o = object()
+
+# cannot set attrs on it!
+o.x = 5
+```
+
+From above, we can't set arbitray attributes on object instantiated directly; python allocates memory to track the attribute names and values for each object; hence it disables arbitrary properties on objects and other built-in types
+
+* Possible to restrict arbitrary properties on classes using slots
+
+* can create empty object of custom class:
+```
+class MyClass:
+  pass
+
+
+m = MyClass()
+m.x = "hello"
+m.x # => "hello"
+```
+
+* Tuples immutable; can't modify objects in tuple
+
+* Tuples are used to store data; behaviour cannot be associated with tuple
+
+	If we require behaviour to manipulate a tuple, pass the tuple into a function
+
+* Tuples store values which are different from each other e.g.
+```
+stock = ("STOCK 1", 177.2, 177.3)
+```
+
+* Can access tuple values directly or by using a slice:
+```
+tuple[2]
+
+tuple[1:3]
+```
+
+* Named Tuples group read-only data
+
+* To create named tuples, we use collections.namedtuple to create a class and create instances of that class
+
+* Like ordinary tuples, its immutable so we can't add attributes or modify its value
