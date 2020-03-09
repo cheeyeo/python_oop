@@ -70,3 +70,22 @@ SystemExit		KeyboardInterrupt			Exception
 * When we use `except` without specifying the exception to catch it will catch all subclasses of BaseException, including SystemExit and KeyboardInterrupt
 
 If we want to catch all exceptions apart from those 2 special cases, use `except Exception as e:`
+
+* Important to separate behaviour and data in OOP design
+
+* Use `property` keyword when we want to add behaviour to data?
+
+* Technically in Python, methods, data, properties are all attributes of a class
+
+* Methods => callable attributes
+
+* Properties => customizable attributes
+
+* How to distinguish between them? Methods should represent actions; things that can be done/performed by an object
+
+* Once confirming an attribute is not an action, we should decide between standard attributes and properties
+
+Always use a standard attribute until we need to control access to the property in some way
+
+Only difference between an attribute and a property is that we can invoke custom actions automatically when a property is retrieved, set or deleted
+
