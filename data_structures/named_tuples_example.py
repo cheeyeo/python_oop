@@ -9,4 +9,4 @@ print(stock.high)
 symbol, current, high, low = stock
 print(current)
 
-stock.current = 14
+stock.current = 14 # raise error as tuples are immutable!

@@ -135,3 +135,15 @@ tuple[1:3]
 * To create named tuples, we use collections.namedtuple to create a class and create instances of that class
 
 * Like ordinary tuples, its immutable so we can't add attributes or modify its value
+
+* Dataclasses => regular objects for defining attributes
+
+* Dictionaries allow mapping of objects to other objects
+
+* Objects represent attributes as dictionaries where the values are properties or methods on the object ( obj.__dict__ )
+
+* Technically, most Python objects are implemented using dictionaries under the hood. You can see this by loading an object into the interactive interpreter and looking at the obj.__dict__ magic attribute. 
+
+When you access an attribute on an object using obj.attr_name, it essentially translates the lookup to obj['attr_name'] under the hood
+
+* We should typically use dataclasses when we know exactly what attributes the data must store, especially if we also want to use the class definition as documentation for the end user.
