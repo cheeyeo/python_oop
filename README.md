@@ -147,3 +147,45 @@ tuple[1:3]
 When you access an attribute on an object using obj.attr_name, it essentially translates the lookup to obj['attr_name'] under the hood
 
 * We should typically use dataclasses when we know exactly what attributes the data must store, especially if we also want to use the class definition as documentation for the end user.
+
+* When to use lists:
+	to store instances of same types of object
+
+	store items in some kind of order, either when inserted or sort by some other criteria
+
+* Define `__lt__` method on objects to allow for custom sorting in list
+
+	`sort` method will invoke `__lt__` to determine the order; `__lt__` method should return either True/False
+
+* To customize only the sort order, can pass `key` argument into sort:
+
+	```
+	l = ["hello", "HELP", "Helo"]
+
+  l.sort() # => ["HELP", "Helo", "hello"]; default behaviour is to return uppercase then lowercase
+
+  l.sort(key=str.lower) # => downcase all items in list then sort; returns ['hello', 'Helo', 'HELP']
+
+	```
+
+* To sort based on other items than first item in list, use `operator.itemgetter` method:
+
+```
+from operator import itemgetter
+
+l = [('h', 4), ('n', 6), ('o', 5), ('p', 1), ('t', 3), ('y', 2)]
+
+l.sort(key=itemgetter(1))
+
+l # => [('p', 1), ('y', 2), ('t', 3), ('h', 4), ('o', 5), ('n', 6)]
+```
+
+Above uses itemgetter to sort by second element in tuple the numbers
+
+* Sets are used to enforce uniqueness within a data set; sets can only contain 1 copy of each data item
+
+* Items added to a set are not ordered; need to convert them into a list first and apply `sort` method
+
+* Sets can operate on other sets using methods such as `union`, `intersection`, `symmetric_difference`
+
+* When using set to check for membership, it only takes O(1) time as it hashes the value and checks for membership i.e. set will find the value in same amount of time no matter how big dataset becomes; for lists we have to iterate over each item and compare them, which can take up to O(N) time
