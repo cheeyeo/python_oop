@@ -189,3 +189,81 @@ Above uses itemgetter to sort by second element in tuple the numbers
 * Sets can operate on other sets using methods such as `union`, `intersection`, `symmetric_difference`
 
 * When using set to check for membership, it only takes O(1) time as it hashes the value and checks for membership i.e. set will find the value in same amount of time no matter how big dataset becomes; for lists we have to iterate over each item and compare them, which can take up to O(N) time
+
+
+================================================================================
+
+* Functions are also objects which can be called and passed into other functions
+
+
+* Useful builtin functions from `__builtins__` module:
+	
+	* len()
+	* reversed()
+	* enumerate()
+	* all(), any()
+	* eval(), exec(), compile() => runs strings as code inside interpreter
+	* hasattr, setattr, getattr, deleteattr => allows object attributes to be manipulated by their string names
+	* zip() => takes 2 sequences and returns a new sequence of tuples
+
+  more functions can be found via `dir(__builtins__)`
+
+* If we run dir on a file-like object, we see that it has two special methods named __enter__ and __exit__. 
+
+These methods turn the file object into what is known as a `context manager`. 
+
+Basically, if we use a special syntax called the `with` statement, these methods will be called before and after nested code is executed. On file objects, the __exit__ method ensures the file is closed, even if an exception is raised
+
+*  Context managers are useful for the common pattern of sandwiching a piece of code between two method calls
+
+* Method Overloading
+
+	Implement single method that takes default/optional params to allow it to accept different argument types, rather than separate function for each type...
+
+* Unpacking args:
+	
+	Use ** to pass dict to function to unpack
+
+	If we have two dicts we want to merge and one of them is a default, we can use the ** to unpack the dict as follows:
+
+	```
+	x = {'a': 1, 'b': 2}
+	y = {'b': 11, 'c': 3}
+	z = {**x, **y} # z{'a': 1, 'b': 11, 'c': 3}
+	```
+
+* Can make any object callable by implementing the `__call__` method
+
+	```
+	class MyClass:
+	  ...
+
+	  def __call__(self, args):
+	     ...
+
+
+	# pass above as parameter to function call which will invoke the __call__ function directly
+
+	myfunc(MyClass())
+	```
+
+	Only implement it if the object is meant to be treated like a function
+
+	( refer to event_driven_timer2.py )
+
+* Methods in objects/classes can also be passed as parameters or replaced by other functions on the fly
+
+	e.g.
+	```
+  class A():
+    def print(self):
+      print("I'm class A")
+
+  def fake_print():
+    print("I'm FAKE A")
+
+  obj = A()
+  obj.print() # "I'm class A"
+  obj.print = fake_print
+  obj.print() # I'm FAKE A
+	```
