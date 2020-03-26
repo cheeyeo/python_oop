@@ -267,3 +267,46 @@ Basically, if we use a special syntax called the `with` statement, these methods
   obj.print = fake_print
   obj.print() # I'm FAKE A
 	```
+
+	===================================================================================
+
+	## Strings
+
+	* String modification methods return a brand new str object; the original input string is not modified ( strings are immutable )
+
+	* Convert array of bytes into Unicode using `decode` method of bytes class
+
+	* Bytes type are immutable
+
+	* Bytesarray is mutable, can build up complex sequences of bytes from it
+
+	```
+	b = bytearray(b"abcdef")
+
+	b[3] = ord(b"g")
+	b[4] = 120
+
+	print(b)
+	```
+
+	use `ord()` function to convert bytes to ordinal value in range 0 - 255 
+
+## Regular Expressions
+
+* conversion occurs for each pattern string into internal structure that makes string searching fast
+
+if used inside a for/while loop, each conversion can slow things down...
+
+use `re.compile` which return a compiled down object 
+
+* Use `pickle.dump` and `pickle.load` to serialize objects to disk
+
+	Don't pickle an entire running program or complex data object
+
+* JSON serializer can only serialize basic types such as ints, floats, strings, lists, dictionaries
+
+	Need to create custom json encoder classes and decoder functions for custom objects ( refer to json_example.py )
+
+	In the json module, both the object storing and loading functions accept optional arguments to customize the behavior. The dump and dumps methods accept a poorly named cls (short for class, which is a reserved keyword) keyword argument. If passed, this should be a subclass of the JSONEncoder class, with the default method overridden. This method accepts an arbitrary object and converts it to a dictionary that json can digest. If it doesn't know how to process the object, we should call the super() method, so that it can take care of serializing basic types in the normal way.
+
+	The load and loads methods also accept such a cls argument that can be a subclass of the inverse class, JSONDecoder. However, it is normally sufficient to pass a function into these methods using the object_hook keyword argument. This function accepts a dictionary and returns an object; if it doesn't know what to do with the input dictionary, it can return it unmodified.
