@@ -1,0 +1,2 @@
+# Example of using timeit module to evaluate time taken between list comprehension and a for loop
+# Basically, write two functions that do the same thing, one using a list comprehension, and one using a for loop to iterate over several thousand items. Pass each function into timeit.timeit, and compare the results. If you're feeling adventurous, compare generators and generator expressions as well.

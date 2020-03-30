@@ -310,3 +310,39 @@ use `re.compile` which return a compiled down object
 	In the json module, both the object storing and loading functions accept optional arguments to customize the behavior. The dump and dumps methods accept a poorly named cls (short for class, which is a reserved keyword) keyword argument. If passed, this should be a subclass of the JSONEncoder class, with the default method overridden. This method accepts an arbitrary object and converts it to a dictionary that json can digest. If it doesn't know how to process the object, we should call the super() method, so that it can take care of serializing basic types in the normal way.
 
 	The load and loads methods also accept such a cls argument that can be a subclass of the inverse class, JSONDecoder. However, it is normally sufficient to pass a function into these methods using the object_hook keyword argument. This function accepts a dictionary and returns an object; if it doesn't know what to do with the input dictionary, it can return it unmodified.
+
+## Iterator 
+
+* Iterator an object with a `next()` method and `done()` method
+
+* `__next__` function => accessed by `next(iterator)` built-in
+
+* list comprehensions are faster than for loops when looping over large num of items as comprehensions are highly optimized C code
+
+* Wrap comprehension in `()` or `{}` to create generator expression
+
+	don't create intermediate objects when using generator expressions
+
+	wrapping a `for` parentheses creates a generator expression
+
+Wrapping a `for` expression in parenthesis creates a generator expression, not a tuple.
+
+Generator expressions are frequently most useful inside function calls. For example, we can call sum, min, or max on a generator expression instead of a list, since these functions process one object at a time. We're only interested in the aggregate result, not any intermediate container.
+
+In general, of the four options, a generator expression should be used whenever possible. 
+
+If we don't actually need a list, set, or dictionary, but simply need to filter or convert items in a sequence, a generator expression will be most efficient. 
+
+If we need to know the length of a list, or sort the result, remove duplicates, or create a dictionary, we'll have to use the comprehension syntax.
+
+* Comprehensions and generator expressions can combine container construction with iteration in a single line.
+```
+set(c for c in arr)
+
+{c for c in arr}
+
+m = [(1,1), (2,2)]
+{k:v for (k,v) in m}
+```
+
+* Generator objects can be constructed using the yield syntax
