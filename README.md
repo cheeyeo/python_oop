@@ -346,3 +346,37 @@ m = [(1,1), (2,2)]
 ```
 
 * Generator objects can be constructed using the yield syntax
+
+
+====================================
+
+## Unit Testing
+
+* use built-in unittest module
+
+* each test method must begin with `test`
+
+* Python's `discover` module looks for any modules in current folder or subfolders with names that start with `test` and runs them
+
+can use CLI as follows:
+```
+python3-munittestdiscover
+```
+
+is above python 3.7 only?
+
+* No need to put all tests into separate tests folder; can out test modules for different packages in a subpackage next to that package
+
+* `pytest` runs both pytest and unittest code
+
+* Tests written in pytest can be run using `pytest <filename>`
+
+* print statements not shown by default for passing tests; to see output need to use `-s` flag:
+`pytest <filename> -s`
+
+* Use `coverage` to measure test coverage
+```
+coverage run <testfile>
+```
+
+Generates a report .coverage, which can be read using `coverage report`
