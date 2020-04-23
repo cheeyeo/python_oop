@@ -380,3 +380,10 @@ coverage run <testfile>
 ```
 
 Generates a report .coverage, which can be read using `coverage report`
+
+* If tests are located in separate directory:
+```
+cd tests
+
+pytest -vv --cov-report term-missing --cov=mymodule test_*.py
+```
